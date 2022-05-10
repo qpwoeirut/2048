@@ -115,3 +115,20 @@ Grid.prototype.serialize = function () {
     cells: cellState
   };
 };
+
+Grid.prototype.toBitboard = function() {
+  let bitboard = 0n;
+  for (let r = 0; r < this.size; r++) {
+    for (let c = 0; c < this.size; c++) {
+      // 0, 0 is bottom right in bitboard representation, r and c are swapped
+      let val = this.cells[this.size - c - 1][this.size - r - 1]?.value;
+      let a = 0n;
+      while (val !== null && val > 1) {
+        val >>= 1;
+        ++a;
+      }
+      bitboard += a << BigInt(16*r | 4*c);
+    }
+  }
+  return bitboard;
+}
