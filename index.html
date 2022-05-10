@@ -15,6 +15,16 @@
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+
+  <script type="text/javascript" defer src="js/keyboard_input_manager.js"></script>
+  <script type="text/javascript" defer src="js/html_actuator.js"></script>
+  <script type="text/javascript" defer src="js/grid.js"></script>
+  <script type="text/javascript" defer src="js/tile.js"></script>
+  <script type="text/javascript" defer src="js/local_storage_manager.js"></script>
+  <script type="text/javascript" defer src="js/game_manager.js"></script>
+  <!-- run main first in order to ensure onRuntimeInitialized is set up before the WASM loads -->
+  <script type="text/javascript" defer src="js/main.js"></script>
+  <script type="text/javascript" defer src="js/players.js"></script>
 </head>
 <body>
   <div class="container">
@@ -84,19 +94,5 @@
     Game created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli</a>. AI players written by Stanley Zhong.
     </p>
   </div>
-
-  <script src="js/keyboard_input_manager.js"></script>
-  <script src="js/html_actuator.js"></script>
-  <script src="js/grid.js"></script>
-  <script src="js/tile.js"></script>
-  <script src="js/local_storage_manager.js"></script>
-  <script src="js/game_manager.js"></script>
-  <script async type="text/javascript" src="js/players.js"></script>
-  <script>
-    // Wait till the browser is ready to render the game (avoids glitches)
-    window.requestAnimationFrame(function () {
-      new GameManager(4, KeyboardInputManager, HTMLActuator, LocalStorageManager);
-    });
-  </script>
 </body>
 </html>
