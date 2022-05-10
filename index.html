@@ -85,15 +85,17 @@
     </p>
   </div>
 
-  <script src="js/bind_polyfill.js"></script>
-  <script src="js/classlist_polyfill.js"></script>
-  <script src="js/animframe_polyfill.js"></script>
   <script src="js/keyboard_input_manager.js"></script>
   <script src="js/html_actuator.js"></script>
   <script src="js/grid.js"></script>
   <script src="js/tile.js"></script>
   <script src="js/local_storage_manager.js"></script>
   <script src="js/game_manager.js"></script>
-  <script src="js/application.js"></script>
+  <script>
+    // Wait till the browser is ready to render the game (avoids glitches)
+    window.requestAnimationFrame(function () {
+      new GameManager(4, KeyboardInputManager, HTMLActuator, LocalStorageManager);
+    });
+  </script>
 </body>
 </html>
