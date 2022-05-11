@@ -40,7 +40,7 @@ body {
 }
 
 h1.title {
-  font-size: 80px;
+  font-size: 3.5rem;
   font-weight: bold;
   margin: 0;
   display: block;
@@ -62,6 +62,7 @@ h1.title {
 .scores-container {
   float: right;
   text-align: right;
+  margin-top: 9px;
 }
 
 .score-container, .best-container {
@@ -495,7 +496,7 @@ hr {
   }
 
   h1.title {
-    font-size: 27px;
+    font-size: 3rem;
     margin-top: 15px;
   }
 
