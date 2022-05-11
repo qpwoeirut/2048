@@ -4,23 +4,21 @@ function AiController(game) {
     this.strategy = _expectimax_player;
     this.heuristicId = 2;
     this.last_move = 0;
-    this.pause_time = 1;  // time to pause between moves, in ms
+    this.pause_time = 500;  // time to pause between moves, in ms
 
     this.update_strategy();
 
     document.querySelectorAll('input[name="ai_strategy"]').forEach(elem => {
-        elem.onchange = this.update_strategy;
+        elem.onchange = this.update_strategy.bind(this);
     })
     document.querySelectorAll('input[name="ai_heuristic"]').forEach(elem => {
-        elem.onchange = this.update_strategy;
+        elem.onchange = this.update_strategy.bind(this);
     })
 }
 
 AiController.prototype.update_strategy = function() {
     const strategyId = parseInt(document.querySelector('input[name="ai_strategy"]:checked').value);
     const heuristicId = parseInt(document.querySelector('input[name="ai_heuristic"]:checked').value);
-    console.log(strategyId)
-    console.log(heuristicId)
     switch (strategyId) {
         case 0:
             this.strategy = _random_player;
@@ -57,7 +55,6 @@ AiController.prototype.update_strategy = function() {
 }
 
 AiController.prototype.loop = function(timestamp) {
-    console.log(timestamp)
     if (!this.active || this.last_move + this.pause_time <= timestamp) {  // pause time hasn't passed yet
         this.last_move = timestamp;
 
@@ -66,5 +63,5 @@ AiController.prototype.loop = function(timestamp) {
         this.game.move((move + 3) & 3);  // convert from LURD to URDL
     }
 
-    window.requestAnimationFrame(this.loop);
+    window.requestAnimationFrame(this.loop.bind(this));
 }
