@@ -22,6 +22,7 @@
   <script type="text/javascript" defer src="js/tile.js"></script>
   <script type="text/javascript" defer src="js/local_storage_manager.js"></script>
   <script type="text/javascript" defer src="js/game_manager.js"></script>
+  <script type="text/javascript" defer src="js/ai_controller.js"></script>
   <!-- run main first in order to ensure onRuntimeInitialized is set up before the WASM loads -->
   <script type="text/javascript" defer src="js/main.js"></script>
   <script type="text/javascript" defer src="js/players.js"></script>
@@ -95,39 +96,39 @@
       </div>
       <div>
         <h3>AI Strategy</h3>
-        <input type="radio" id="expectimaxStrategy" name="ai_strategy" checked>
-        <label for="expectimaxStrategy">Expectimax</label>
-        <br>
-        <input type="radio" id="minimaxStrategy" name="ai_strategy">
-        <label for="minimaxStrategy">Minimax</label>
-        <br>
-        <input type="radio" id="randTrialsStrategy" name="ai_strategy">
-        <label for="randTrialsStrategy">Random Trials</label>
-        <br>
-        <input type="radio" id="monteCarloStrategy" name="ai_strategy">
-        <label for="monteCarloStrategy">Monte Carlo Tree Search</label>
-        <br>
-        <input type="radio" id="randomStrategy" name="ai_strategy">
+        <input type="radio" id="randomStrategy" name="ai_strategy" value="0">
         <label for="randomStrategy">Random Moves</label>
         <br>
-        <input type="radio" id="spamCornerStrategy" name="ai_strategy">
+        <input type="radio" id="spamCornerStrategy" name="ai_strategy" value="1">
         <label for="spamCornerStrategy">Corner Spam</label>
         <br>
-        <input type="radio" id="orderedStrategy" name="ai_strategy">
+        <input type="radio" id="orderedStrategy" name="ai_strategy" value="2">
         <label for="orderedStrategy">Ordered Moves</label>
         <br>
-        <input type="radio" id="rotatingStrategy" name="ai_strategy">
+        <input type="radio" id="rotatingStrategy" name="ai_strategy" value="3">
         <label for="rotatingStrategy">Rotating Moves</label>
+        <br>
+        <input type="radio" id="randTrialsStrategy" name="ai_strategy" value="4">
+        <label for="randTrialsStrategy">Random Trials</label>
+        <br>
+        <input type="radio" id="minimaxStrategy" name="ai_strategy" value="5">
+        <label for="minimaxStrategy">Minimax</label>
+        <br>
+        <input type="radio" id="expectimaxStrategy" name="ai_strategy" value="6" checked>
+        <label for="expectimaxStrategy">Expectimax</label>
+        <br>
+        <input type="radio" id="monteCarloStrategy" name="ai_strategy" value="7">
+        <label for="monteCarloStrategy">Monte Carlo Tree Search</label>
         <br>
         <div id="heuristicContainer">
             <h3>Heuristic</h3>
-            <input type="radio" id="scoreHeuristic" name="ai_heuristic">
+            <input type="radio" id="scoreHeuristic" name="ai_heuristic" value="0">
             <label for="scoreHeuristic">Score</label>
             <br>
-            <input type="radio" id="mergeHeuristic" name="ai_heuristic">
+            <input type="radio" id="mergeHeuristic" name="ai_heuristic" value="1">
             <label for="mergeHeuristic">Empty Tiles</label>
             <br>
-            <input type="radio" id="cornerHeuristic" name="ai_heuristic" checked>
+            <input type="radio" id="cornerHeuristic" name="ai_heuristic" value="2" checked>
             <label for="cornerHeuristic">Corner Building</label>
             <br>
         </div>
