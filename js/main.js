@@ -21,7 +21,7 @@ window.requestAnimationFrame(function () {
         }
     }
 
-    const MAX_WAIT_TIME = 5000;
+    const MAX_WAIT_TIME = 8000;
     let lastMoveTime = 1000 - MAX_WAIT_TIME;
     const pauseTime = 100;
     const playGame = (timestamp) => {
@@ -32,7 +32,7 @@ window.requestAnimationFrame(function () {
             playerWorker.postMessage([1, gameManager.grid.toBitboard()]);
             lastMoveTime = timestamp;
         } else if (lastMoveTime + MAX_WAIT_TIME <= timestamp) {
-            console.warn("No move in the last 5 seconds!");
+            console.warn("No move in the last 8 seconds!");
             playerWorker.postMessage([1, gameManager.grid.toBitboard()]);
             lastMoveTime = timestamp;
         }
