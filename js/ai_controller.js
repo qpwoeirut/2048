@@ -4,7 +4,7 @@ function AiController(game) {
     this.strategy = _expectimax_player;
     this.heuristicId = 2;
     this.last_move = 0;
-    this.pause_time = 200;  // time to pause between moves, in ms
+    this.pause_time = 300;  // time to pause between moves, in ms
 
     this.update_strategy();
 
@@ -55,13 +55,12 @@ AiController.prototype.update_strategy = function() {
 }
 
 AiController.prototype.loop = function() {
-    const timestamp = Date.now();
-    if (this.active && this.last_move + this.pause_time <= timestamp && !this.game.isGameTerminated()) {
+    if (this.active && this.last_move + this.pause_time <= Date.now() && !this.game.isGameTerminated()) {
         const board = this.game.grid.toBitboard();
         const move = this.strategy(board);
 
         this.game.move((move + 3) & 3);  // convert from LURD to URDL
 
-        this.last_move = timestamp;  // set timestamp after move is made
+        this.last_move = Date.now();  // set timestamp after move is made
     }
 }
