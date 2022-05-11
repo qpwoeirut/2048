@@ -1,17 +1,35 @@
-function AiController(game) {
-    this.game = game;
-    this.active = true;
-    this.strategy = _expectimax_player;
-    this.heuristicId = 2;
-    this.last_move = 0;
-    this.pause_time = 300;  // time to pause between moves, in ms
+// this will be run in a web worker
 
-    this.update_strategy();
+
+var Module = {  // using let will cause issues with redefinition of Module
+    onRuntimeInitialized: function () {
+        _init_game();
+        postMessage("ready!");
+
+        const controller = new AiController();
+
+        onmessage = function(e) {
+            const messageType = e.data[0];
+            if (messageType === 0) {
+                controller.update_strategy(e.data[1], e.data[2]);
+            } else if (messageType === 1) {
+                const move = controller.pick_move(e.data[1]);
+                postMessage(move);
+            }
+        }
+    }
+};
+
+importScripts("players.js");
+
+
+function AiController() {
+    // this.strategy and this.heuristicId should be updated once the main thread is ready
+    this.strategy = _random_player;
+    this.heuristicId = 0;
 }
 
-AiController.prototype.update_strategy = function() {
-    const strategyId = parseInt(document.querySelector('input[name="ai_strategy"]:checked').value);
-    const heuristicId = parseInt(document.querySelector('input[name="ai_heuristic"]:checked').value);
+AiController.prototype.update_strategy = function(strategyId, heuristicId) {
     switch (strategyId) {
         case 0:
             this.strategy = _random_player;
@@ -47,13 +65,8 @@ AiController.prototype.update_strategy = function() {
     }
 }
 
-AiController.prototype.loop = function() {
-    if (this.active && this.last_move + this.pause_time <= Date.now() && !this.game.isGameTerminated()) {
-        const board = this.game.grid.toBitboard();
-        const move = this.strategy(board);
+AiController.prototype.pick_move = function(board) {
+    const move = this.strategy(board);
 
-        this.game.move((move + 3) & 3);  // convert from LURD to URDL
-
-        this.last_move = Date.now();  // set timestamp after move is made
-    }
+    return (move + 3) & 3;  // convert from LURD to URDL
 }
