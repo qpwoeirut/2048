@@ -476,10 +476,6 @@ hr {
   margin-bottom: 0.25rem;
 }
 
-#controlsContainer * {
-  font-size: 18px;
-}
-
 @include smaller($mobile-threshold) {
   // Redefine variables for smaller screens
   $field-width: 280px;

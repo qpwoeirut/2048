@@ -641,10 +641,6 @@ hr {
   margin-bottom: 0.25rem;
 }
 
-#controlsContainer * {
-  font-size: 18px;
-}
-
 @media screen and (max-width: 520px) {
   html, body {
     font-size: 15px;
