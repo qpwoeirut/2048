@@ -529,9 +529,9 @@ hr {
   }
 }
 .tile-new .tile-inner {
-  -webkit-animation: appear 150ms ease 100ms;
-  -moz-animation: appear 150ms ease 100ms;
-  animation: appear 150ms ease 100ms;
+  -webkit-animation: appear 200ms ease 100ms;
+  -moz-animation: appear 200ms ease 100ms;
+  animation: appear 200ms ease 100ms;
   -webkit-animation-fill-mode: backwards;
   -moz-animation-fill-mode: backwards;
   animation-fill-mode: backwards;
@@ -599,9 +599,9 @@ hr {
 }
 .tile-merged .tile-inner {
   z-index: 20;
-  -webkit-animation: pop 150ms ease 100ms;
-  -moz-animation: pop 150ms ease 100ms;
-  animation: pop 150ms ease 100ms;
+  -webkit-animation: pop 200ms ease 100ms;
+  -moz-animation: pop 200ms ease 100ms;
+  animation: pop 200ms ease 100ms;
   -webkit-animation-fill-mode: backwards;
   -moz-animation-fill-mode: backwards;
   animation-fill-mode: backwards;

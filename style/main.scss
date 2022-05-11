@@ -427,7 +427,7 @@ hr {
 }
 
 .tile-new .tile-inner {
-  @include animation(appear 150ms ease $transition-speed);
+  @include animation(appear 200ms ease $transition-speed);
   @include animation-fill-mode(backwards);
 }
 
@@ -447,7 +447,7 @@ hr {
 
 .tile-merged .tile-inner {
   z-index: 20;
-  @include animation(pop 150ms ease $transition-speed);
+  @include animation(pop 200ms ease $transition-speed);
   @include animation-fill-mode(backwards);
 }
 
