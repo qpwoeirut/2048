@@ -4,7 +4,8 @@ function AiController(game) {
     this.strategy = _expectimax_player;
     this.heuristicId = 2;
     this.last_move = 0;
-    this.pause_time = 500;  // time to pause between moves, in ms
+    this.compute_time = 400;  // max time to spend computing moves before things get laggy
+    this.pause_time = 50;  // time to pause between moves, in ms
 
     this.update_strategy();
 
@@ -54,14 +55,13 @@ AiController.prototype.update_strategy = function() {
     }
 }
 
-AiController.prototype.loop = function(timestamp) {
-    if (!this.active || this.last_move + this.pause_time <= timestamp) {  // pause time hasn't passed yet
-        this.last_move = timestamp;
+AiController.prototype.loop = function() {
+    const timestamp = Date.now();
+    if (this.active && this.last_move + this.pause_time <= timestamp && !this.game.isGameTerminated()) {
+        this.last_move = timestamp + this.compute_time;  // assume that move won't be made until end of compute time
 
         const board = this.game.grid.toBitboard();
         const move = this.strategy(board);
         this.game.move((move + 3) & 3);  // convert from LURD to URDL
     }
-
-    window.requestAnimationFrame(this.loop.bind(this));
 }
