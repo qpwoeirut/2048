@@ -7,13 +7,6 @@ function AiController(game) {
     this.pause_time = 300;  // time to pause between moves, in ms
 
     this.update_strategy();
-
-    document.querySelectorAll('input[name="ai_strategy"]').forEach(elem => {
-        elem.onchange = this.update_strategy.bind(this);
-    })
-    document.querySelectorAll('input[name="ai_heuristic"]').forEach(elem => {
-        elem.onchange = this.update_strategy.bind(this);
-    })
 }
 
 AiController.prototype.update_strategy = function() {
