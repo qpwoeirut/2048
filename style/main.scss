@@ -468,8 +468,16 @@ hr {
   float: right;
 }
 
-.game-explanation {
-  margin-top: 50px;
+#controlsContainer {
+  margin: 1rem auto;
+}
+
+#controlsContainer h2, #controlsContainer h3 {
+  margin-bottom: 0.25rem;
+}
+
+#controlsContainer * {
+  font-size: 18px;
 }
 
 @include smaller($mobile-threshold) {

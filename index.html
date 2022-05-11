@@ -82,6 +82,59 @@
       </div>
     </div>
 
+    <div id="controlsContainer">
+      <div>
+        <h2>AI Player</h2>
+        <input type="radio" id="aiOn" name="ai_player">
+        <label for="aiOn">On</label>
+        <input type="radio" id="aiOff" name="ai_player" checked>
+        <label for="aiOff">Off</label>
+        <br>
+        <label for="pauseTime">Time to pause between moves (in milliseconds) </label>
+        <input type="number" id="pauseTime" min="0" max="10000" value="10">
+      </div>
+      <div>
+        <h3>AI Strategy</h3>
+        <input type="radio" id="expectimaxStrategy" name="ai_strategy">
+        <label for="expectimaxStrategy">Expectimax</label>
+        <br>
+        <input type="radio" id="minimaxStrategy" name="ai_strategy">
+        <label for="minimaxStrategy">Minimax</label>
+        <br>
+        <input type="radio" id="randTrialsStrategy" name="ai_strategy">
+        <label for="randTrialsStrategy">Random Trials</label>
+        <br>
+        <input type="radio" id="monteCarloStrategy" name="ai_strategy">
+        <label for="monteCarloStrategy">Monte Carlo Tree Search</label>
+        <br>
+        <input type="radio" id="randomStrategy" name="ai_strategy">
+        <label for="randomStrategy">Random Moves</label>
+        <br>
+        <input type="radio" id="spamCornerStrategy" name="ai_strategy">
+        <label for="spamCornerStrategy">Corner Spam</label>
+        <br>
+        <input type="radio" id="orderedStrategy" name="ai_strategy">
+        <label for="orderedStrategy">Ordered Moves</label>
+        <br>
+        <input type="radio" id="rotatingStrategy" name="ai_strategy">
+        <label for="rotatingStrategy">Rotating Moves</label>
+        <br>
+        <div id="heuristicContainer">
+            <h3>Heuristic</h3>
+            <input type="radio" id="scoreHeuristic" name="ai_heuristic">
+            <label for="scoreHeuristic">Score</label>
+            <br>
+            <input type="radio" id="mergeHeuristic" name="ai_heuristic">
+            <label for="mergeHeuristic">Empty Tiles</label>
+            <br>
+            <input type="radio" id="cornerHeuristic" name="ai_heuristic">
+            <label for="cornerHeuristic">Corner Building</label>
+            <br>
+        </div>
+      </div>
+    </div>
+
+    <hr>
     <p class="game-explanation">
       <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
     </p>
