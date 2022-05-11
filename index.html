@@ -1,154 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>2048 with AI</title>
+    <meta charset="utf-8">
+    <title>2048 with AI</title>
 
-  <link href="style/main.css" rel="stylesheet" type="text/css">
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
-  <link rel="apple-touch-startup-image" href="meta/apple-touch-startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone 5+ -->
-  <link rel="apple-touch-startup-image" href="meta/apple-touch-startup-image-640x920.png"  media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone, retina -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="style/main.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
+    <link rel="apple-touch-startup-image" href="meta/apple-touch-startup-image-640x1096.png"
+          media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
+    <!-- iPhone 5+ -->
+    <link rel="apple-touch-startup-image" href="meta/apple-touch-startup-image-640x920.png"
+          media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)">
+    <!-- iPhone, retina -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="description" content="The 2048 game with AI players">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="description" content="The 2048 game with AI players">
 
-  <script type="text/javascript" defer src="js/keyboard_input_manager.js"></script>
-  <script type="text/javascript" defer src="js/html_actuator.js"></script>
-  <script type="text/javascript" defer src="js/grid.js"></script>
-  <script type="text/javascript" defer src="js/tile.js"></script>
-  <script type="text/javascript" defer src="js/local_storage_manager.js"></script>
-  <script type="text/javascript" defer src="js/game_manager.js"></script>
-  <script type="text/javascript" defer src="js/ai_controller.js"></script>
-  <!-- run main first in order to ensure onRuntimeInitialized is set up before the WASM loads -->
-  <script type="text/javascript" defer src="js/main.js"></script>
-  <script type="text/javascript" defer src="js/players.js"></script>
+    <script type="text/javascript" defer src="js/keyboard_input_manager.js"></script>
+    <script type="text/javascript" defer src="js/html_actuator.js"></script>
+    <script type="text/javascript" defer src="js/grid.js"></script>
+    <script type="text/javascript" defer src="js/tile.js"></script>
+    <script type="text/javascript" defer src="js/local_storage_manager.js"></script>
+    <script type="text/javascript" defer src="js/game_manager.js"></script>
+    <script type="text/javascript" defer src="js/ai_controller.js"></script>
+    <!-- run main first in order to ensure onRuntimeInitialized is set up before the WASM loads -->
+    <script type="text/javascript" defer src="js/main.js"></script>
+    <script type="text/javascript" defer src="js/players.js"></script>
 </head>
 <body>
-  <div class="container">
+<div class="container">
     <div class="heading">
-      <h1 class="title">2048 with AI</h1>
-      <div class="scores-container">
-        <div class="score-container">0</div>
-        <div class="best-container">0</div>
-      </div>
+        <h1 class="title">2048 with AI</h1>
+        <div class="scores-container">
+            <div class="score-container">0</div>
+            <div class="best-container">0</div>
+        </div>
     </div>
 
     <div class="above-game">
-      <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
-      <a class="restart-button">New Game</a>
+        <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
+        <a class="restart-button">New Game</a>
     </div>
 
     <div class="game-container">
-      <div class="game-message">
-        <p></p>
-        <div class="lower">
-	        <a class="keep-playing-button">Keep going</a>
-          <a class="retry-button">Try again</a>
+        <div class="game-message">
+            <p></p>
+            <div class="lower">
+                <a class="keep-playing-button">Keep going</a>
+                <a class="retry-button">Try again</a>
+            </div>
         </div>
-      </div>
 
-      <div class="grid-container">
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
+        <div class="grid-container">
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
         </div>
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-      </div>
 
-      <div class="tile-container">
+        <div class="tile-container">
 
-      </div>
+        </div>
     </div>
 
     <div id="controlsContainer">
-      <div>
-        <h2>AI Player</h2>
-        <input type="radio" id="aiOn" name="ai_player" checked>
-        <label for="aiOn">On</label>
-        <input type="radio" id="aiOff" name="ai_player">
-        <label for="aiOff">Off</label>
-        <br>
-<!--        <label for="pauseTime">Time to pause between moves (in milliseconds) </label>-->
-<!--        <input type="number" id="pauseTime" min="0" max="10000" value="10">-->
-      </div>
-      <div>
-        <h3>AI Strategy</h3>
-        <input type="radio" id="randomStrategy" name="ai_strategy" value="0">
-        <label for="randomStrategy">Random Moves</label>
-        <br>
-        <input type="radio" id="spamCornerStrategy" name="ai_strategy" value="1">
-        <label for="spamCornerStrategy">Corner Spam</label>
-        <br>
-        <input type="radio" id="orderedStrategy" name="ai_strategy" value="2">
-        <label for="orderedStrategy">Ordered Moves</label>
-        <br>
-        <input type="radio" id="rotatingStrategy" name="ai_strategy" value="3">
-        <label for="rotatingStrategy">Rotating Moves</label>
-        <br>
-        <input type="radio" id="randTrialsStrategy" name="ai_strategy" value="4">
-        <label for="randTrialsStrategy">Random Trials</label>
-        <br>
-        <input type="radio" id="minimaxStrategy" name="ai_strategy" value="5">
-        <label for="minimaxStrategy">Minimax</label>
-        <br>
-        <input type="radio" id="expectimaxStrategy" name="ai_strategy" value="6" checked>
-        <label for="expectimaxStrategy">Expectimax</label>
-        <br>
-        <input type="radio" id="monteCarloStrategy" name="ai_strategy" value="7">
-        <label for="monteCarloStrategy">Monte Carlo Tree Search</label>
-        <br>
-        <div id="heuristicContainer">
-            <h3>Heuristic</h3>
-            <input type="radio" id="scoreHeuristic" name="ai_heuristic" value="0">
-            <label for="scoreHeuristic">Score</label>
+        <div>
+            <h2>AI Player</h2>
+            <input type="radio" id="aiOn" name="ai_player" checked>
+            <label for="aiOn">On</label>
+            <input type="radio" id="aiOff" name="ai_player">
+            <label for="aiOff">Off</label>
             <br>
-            <input type="radio" id="mergeHeuristic" name="ai_heuristic" value="1">
-            <label for="mergeHeuristic">Empty Tiles</label>
-            <br>
-            <input type="radio" id="cornerHeuristic" name="ai_heuristic" value="2" checked>
-            <label for="cornerHeuristic">Corner Building</label>
-            <br>
+            <!--        <label for="pauseTime">Time to pause between moves (in milliseconds) </label>-->
+            <!--        <input type="number" id="pauseTime" min="0" max="10000" value="10">-->
         </div>
-      </div>
+        <div>
+            <h3>AI Strategy</h3>
+            <input type="radio" id="randomStrategy" name="ai_strategy" value="0">
+            <label for="randomStrategy">Random Moves</label>
+            <br>
+            <input type="radio" id="spamCornerStrategy" name="ai_strategy" value="1">
+            <label for="spamCornerStrategy">Corner Spam</label>
+            <br>
+            <input type="radio" id="orderedStrategy" name="ai_strategy" value="2">
+            <label for="orderedStrategy">Ordered Moves</label>
+            <br>
+            <input type="radio" id="rotatingStrategy" name="ai_strategy" value="3">
+            <label for="rotatingStrategy">Rotating Moves</label>
+            <br>
+            <input type="radio" id="randTrialsStrategy" name="ai_strategy" value="4">
+            <label for="randTrialsStrategy">Random Trials</label>
+            <br>
+            <input type="radio" id="minimaxStrategy" name="ai_strategy" value="5">
+            <label for="minimaxStrategy">Minimax</label>
+            <br>
+            <input type="radio" id="expectimaxStrategy" name="ai_strategy" value="6" checked>
+            <label for="expectimaxStrategy">Expectimax</label>
+            <br>
+            <input type="radio" id="monteCarloStrategy" name="ai_strategy" value="7">
+            <label for="monteCarloStrategy">Monte Carlo Tree Search</label>
+            <br>
+            <div id="heuristicContainer">
+                <h3>Heuristic</h3>
+                <input type="radio" id="scoreHeuristic" name="ai_heuristic" value="0">
+                <label for="scoreHeuristic">Score</label>
+                <br>
+                <input type="radio" id="mergeHeuristic" name="ai_heuristic" value="1">
+                <label for="mergeHeuristic">Empty Tiles</label>
+                <br>
+                <input type="radio" id="cornerHeuristic" name="ai_heuristic" value="2" checked>
+                <label for="cornerHeuristic">Corner Building</label>
+                <br>
+            </div>
+        </div>
     </div>
 
     <hr>
     <p class="game-explanation">
-      <strong class="important">How to play:</strong> Pick a strategy for the AI to use. You can also turn off the AI and use your <strong>arrow keys</strong> to move the tiles. Press <strong>R</strong> to restart.
+        <strong class="important">How to play:</strong> Pick a strategy for the AI to use. You can also turn off the AI
+        and use your <strong>arrow keys</strong> to move the tiles. Press <strong>R</strong> to restart.
     </p>
     <hr>
     <p>
-    <strong class="important">Note:</strong> This site is an unofficial version of 2048.
-      The game mechanics were forked from this <a href="https://github.com/gabrielecirulli/2048" target="_blank">repository</a> and the AI players were added on top.
+        <strong class="important">Note:</strong> This site is an unofficial version of 2048.
+        The game mechanics were forked from the <a href="https://github.com/gabrielecirulli/2048" target="_blank">2048
+        repository</a> and the AI players were added on top.
     </p>
     <hr>
     <p>
-    Game created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli</a>. AI players written by Stanley Zhong.
+        Game created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli</a>.
+        AI players written by Stanley Zhong.
+        The source code is <a href="https://github.com/qpwoeirut/2048">here</a>.
     </p>
-  </div>
+</div>
 </body>
 </html>
