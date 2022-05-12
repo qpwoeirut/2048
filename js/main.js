@@ -25,13 +25,13 @@ window.requestAnimationFrame(function () {
     let lastMoveTime = 1000 - MAX_WAIT_TIME;
     const pauseTime = 100;
     const playGame = (timestamp) => {
-        if (workerReady && lastMoveTime + pauseTime <= timestamp && nextMove !== -1) {
+        if (aiActive && workerReady && lastMoveTime + pauseTime <= timestamp && nextMove !== -1) {
             gameManager.move(nextMove);
             nextMove = -1;
 
             playerWorker.postMessage([1, gameManager.grid.toBitboard()]);
             lastMoveTime = timestamp;
-        } else if (lastMoveTime + MAX_WAIT_TIME <= timestamp) {
+        } else if (aiActive && lastMoveTime + MAX_WAIT_TIME <= timestamp) {
             console.warn("No move in the last 8 seconds!");
             playerWorker.postMessage([1, gameManager.grid.toBitboard()]);
             lastMoveTime = timestamp;
