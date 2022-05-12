@@ -36,7 +36,8 @@ body {
 }
 
 .heading {
-  @include clearfix;
+  display: flex;
+  justify-content: space-between;
 }
 
 h1.title {
@@ -60,26 +61,27 @@ h1.title {
 }
 
 .scores-container {
-  float: right;
-  text-align: right;
-  margin-top: 9px;
+  display: flex;
+  align-items: center;
 }
 
 .score-container, .best-container {
-  $height: 25px;
+  $height: 21px;
 
+  display: flex;
   position: relative;
-  display: inline-block;
   background: $game-container-background;
-  padding: 15px 25px;
+  color: white;
+  margin: 0.2rem;
+  border-radius: 3px;
+  padding: 15px 20px;
+  min-width: 3.5rem;
   font-size: $height;
   height: $height;
   line-height: $height + 22px;
   font-weight: bold;
-  border-radius: 3px;
-  color: white;
-  margin-top: 8px;
   text-align: center;
+  justify-content: center;
 
   &:after {
     position: absolute;

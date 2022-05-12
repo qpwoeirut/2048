@@ -12,10 +12,9 @@ body {
   margin: 80px 0;
 }
 
-.heading:after {
-  content: "";
-  display: block;
-  clear: both;
+.heading {
+  display: flex;
+  justify-content: space-between;
 }
 
 h1.title {
@@ -57,24 +56,25 @@ h1.title {
   }
 }
 .scores-container {
-  float: right;
-  text-align: right;
-  margin-top: 9px;
+  display: flex;
+  align-items: center;
 }
 
 .score-container, .best-container {
+  display: flex;
   position: relative;
-  display: inline-block;
   background: #bbada0;
-  padding: 15px 25px;
-  font-size: 25px;
-  height: 25px;
-  line-height: 47px;
-  font-weight: bold;
-  border-radius: 3px;
   color: white;
-  margin-top: 8px;
+  margin: 0.2rem;
+  border-radius: 3px;
+  padding: 15px 20px;
+  min-width: 3.5rem;
+  font-size: 21px;
+  height: 21px;
+  line-height: 43px;
+  font-weight: bold;
   text-align: center;
+  justify-content: center;
 }
 .score-container:after, .best-container:after {
   position: absolute;
@@ -91,8 +91,8 @@ h1.title {
   position: absolute;
   right: 30px;
   color: red;
-  font-size: 25px;
-  line-height: 25px;
+  font-size: 21px;
+  line-height: 21px;
   font-weight: bold;
   color: rgba(119, 110, 101, 0.9);
   z-index: 100;
