@@ -23,7 +23,7 @@ window.requestAnimationFrame(function () {
 
     const MAX_WAIT_TIME = 8000;
     let lastMoveTime = 1000 - MAX_WAIT_TIME;
-    const pauseTime = 100;
+    const pauseTime = 50;
     const playGame = (timestamp) => {
         if (aiActive && workerReady && lastMoveTime + pauseTime <= timestamp && nextMove !== -1) {
             gameManager.move(nextMove);
