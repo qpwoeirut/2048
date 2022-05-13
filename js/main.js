@@ -10,7 +10,7 @@ window.requestAnimationFrame(function () {
         playerWorker.postMessage([0, strategyId, heuristicId]);
     }
 
-    let nextMove = -1;
+    let nextMove = -1;  // -1 is waiting for response, -2 is waiting for game to restart
     playerWorker.onmessage = (e) => {
         if (!workerReady) {
             workerReady = true;
@@ -20,17 +20,24 @@ window.requestAnimationFrame(function () {
             nextMove = e.data
         }
     }
+    playerWorker.onerror = console.error;
 
     const MAX_WAIT_TIME = 8000;
-    let lastMoveTime = 1000 - MAX_WAIT_TIME;
+    let lastMoveTime = 4000 - MAX_WAIT_TIME;
     const pauseTime = 50;
     const playGame = (timestamp) => {
         if (aiActive && workerReady && !gameManager.isGameTerminated() && lastMoveTime + pauseTime <= timestamp && nextMove !== -1) {
-            gameManager.move(nextMove);
+            if (0 <= nextMove && nextMove < 4) {
+                gameManager.move(nextMove);
+            }
             nextMove = -1;
 
-            playerWorker.postMessage([1, gameManager.grid.toBitboard()]);
-            lastMoveTime = timestamp;
+            if (!gameManager.isGameTerminated()) {
+                playerWorker.postMessage([1, gameManager.grid.toBitboard()]);
+                lastMoveTime = timestamp;
+            } else {
+                nextMove = -2;
+            }
         } else if (aiActive && !gameManager.isGameTerminated() && lastMoveTime + MAX_WAIT_TIME <= timestamp) {
             console.warn("No move in the last 8 seconds!");
             playerWorker.postMessage([1, gameManager.grid.toBitboard()]);
