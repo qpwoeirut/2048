@@ -22,9 +22,29 @@ window.requestAnimationFrame(function () {
     }
     playerWorker.onerror = console.error;
 
+    let aiActive = true;
+    const aiOn = document.getElementById("aiOn");
+    aiOn.onchange = function() { aiActive = aiOn.checked }
+    const aiOff = document.getElementById("aiOff");
+    aiOff.onchange = function() { aiActive = !aiOff.checked }
+
+    const pauseTimeElem = document.getElementById("pauseTime");
+    let pauseTime = pauseTimeElem.checkValidity() ? parseInt(pauseTimeElem.value) : 50;
+    pauseTimeElem.onchange = (e) => {
+        if (pauseTimeElem.checkValidity()) {
+            pauseTime = parseInt(pauseTimeElem.value);
+        }
+    }
+
+    document.querySelectorAll('input[name="ai_strategy"]').forEach(elem => {
+        elem.onchange = updateStrategy
+    })
+    document.querySelectorAll('input[name="ai_heuristic"]').forEach(elem => {
+        elem.onchange = updateStrategy
+    })
+
     const MAX_WAIT_TIME = 8000;
     let lastMoveTime = 4000 - MAX_WAIT_TIME;
-    const pauseTime = 50;
     const playGame = (timestamp) => {
         if (aiActive && workerReady && !gameManager.isGameTerminated() && lastMoveTime + pauseTime <= timestamp && nextMove !== -1) {
             if (0 <= nextMove && nextMove < 4) {
@@ -45,19 +65,6 @@ window.requestAnimationFrame(function () {
         }
         window.requestAnimationFrame(playGame);
     }
-
-    let aiActive = true;
-    const aiOn = document.getElementById("aiOn");
-    aiOn.onchange = function() { aiActive = aiOn.checked }
-    const aiOff = document.getElementById("aiOff");
-    aiOff.onchange = function() { aiActive = !aiOff.checked }
-
-    document.querySelectorAll('input[name="ai_strategy"]').forEach(elem => {
-        elem.onchange = updateStrategy
-    })
-    document.querySelectorAll('input[name="ai_heuristic"]').forEach(elem => {
-        elem.onchange = updateStrategy
-    })
 
     window.requestAnimationFrame(playGame);
 });
