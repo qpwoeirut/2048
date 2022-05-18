@@ -51,12 +51,12 @@ AiController.prototype.update_strategy = function(strategyId, heuristicId) {
         case 5:
             this.strategy = _minimax_player;
             this.heuristicId = heuristicId;
-            _init_minimax_strategy(0, this.heuristicId);
+            _init_minimax_strategy(-1, this.heuristicId);
             break;
         case 6:
             this.strategy = _expectimax_player;
             this.heuristicId = heuristicId;
-            _init_expectimax_strategy(0, this.heuristicId);
+            _init_expectimax_strategy(-1, this.heuristicId);
             break;
         case 7:
             this.strategy = _monte_carlo_player;
