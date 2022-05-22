@@ -479,6 +479,10 @@ hr {
   margin-bottom: 0.25rem;
 }
 
+.hidden {
+  display: none;
+}
+
 @include smaller($mobile-threshold) {
   // Redefine variables for smaller screens
   $field-width: 280px;

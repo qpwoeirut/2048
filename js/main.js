@@ -3,11 +3,20 @@ window.requestAnimationFrame(function () {
     let workerReady = false;
 
     const gameManager = new GameManager(4, KeyboardInputManager, HTMLActuator, LocalStorageManager);
+    const heuristicContainer = document.getElementById("heuristicContainer");
 
     const updateStrategy = () => {
-        const strategyId = parseInt(document.querySelector('input[name="ai_strategy"]:checked').value);
+        const selectedStrategy = document.querySelector('input[name="ai_strategy"]:checked');
+        const strategyId = parseInt(selectedStrategy.value);
         const heuristicId = parseInt(document.querySelector('input[name="ai_heuristic"]:checked').value);
         playerWorker.postMessage([0, strategyId, heuristicId]);
+
+        const hasHeuristic = selectedStrategy.getAttribute("data-heuristic") === "true";
+        if (hasHeuristic) {
+            heuristicContainer.classList.remove("hidden");
+        } else {
+            heuristicContainer.classList.add("hidden");
+        }
     }
 
     let nextMove = -1;  // -1 is waiting for response, -2 is waiting for game to restart
