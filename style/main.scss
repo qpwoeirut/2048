@@ -1,13 +1,10 @@
 @import "helpers";
 @import "fonts/clear-sans.css";
 
-$field-width: 500px;
-$grid-spacing: 15px;
 $grid-row-cells: 4;
-$tile-size: ($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells;
 $tile-border-radius: 3px;
 
-$mobile-threshold: $field-width + 20px;
+$mobile-threshold: 520px;
 
 $text-color: #776E65;
 $bright-text-color: #f9f6f2;
@@ -28,11 +25,11 @@ html, body {
   background: #faf8ef;
   color: $text-color;
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 body {
-  margin: 80px 0;
+  margin: 4rem 0;
 }
 
 .heading {
@@ -44,8 +41,6 @@ h1.title {
   font-size: 3.5rem;
   font-weight: bold;
   margin: 0;
-  display: block;
-  float: left;
 }
 
 @include keyframes(move-up) {
@@ -144,7 +139,7 @@ hr {
 }
 
 .container {
-  width: $field-width;
+  width: $mobile-threshold - 20px;
   margin: 0 auto;
 }
 
@@ -171,9 +166,10 @@ hr {
 }
 
 // Game field mixin used to render CSS at different width
-@mixin game-field {
+@mixin game-field($field-width: $mobile-threshold - 20px, $grid-spacing: 15px) {
+  $tile-size: ($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells;
   .game-container {
-    margin-top: $game-container-margin-top;
+    margin: $game-container-margin-top auto 0 auto;
     position: relative;
     padding: $grid-spacing;
 
@@ -396,7 +392,7 @@ hr {
         font-size: 35px;
 
         @include smaller($mobile-threshold) {
-          font-size: 15px;
+          font-size: 18px;
         }
       }
     }
@@ -412,7 +408,7 @@ hr {
     font-size: 30px;
 
     @include smaller($mobile-threshold) {
-      font-size: 10px;
+      font-size: 14px;
     }
   }
 }
@@ -485,29 +481,25 @@ hr {
 
 @include smaller($mobile-threshold) {
   // Redefine variables for smaller screens
-  $field-width: 280px;
-  $grid-spacing: 10px;
   $grid-row-cells: 4;
-  $tile-size: ($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells;
   $tile-border-radius: 3px;
   $game-container-margin-top: 17px;
 
   html, body {
-    font-size: 15px;
+    font-size: 0.9rem;
   }
 
   body {
-    margin: 20px 0;
-    padding: 0 20px;
+    margin: 15px 0;
+    padding: 0 15px;
   }
 
   h1.title {
     font-size: 3rem;
-    margin-top: 15px;
   }
 
   .container {
-    width: $field-width;
+    width: 100%;
     margin: 0 auto;
   }
 
@@ -530,15 +522,13 @@ hr {
   }
 
   .restart-button {
-    width: 42%;
-    padding: 0;
     display: block;
     box-sizing: border-box;
     margin-top: 2px;
   }
 
   // Render the game field at the right width
-  @include game-field;
+  @include game-field($field-width: 350px, $grid-spacing: 10px);
 
   // Rest of the font-size adjustments in the tile class
   .tile .tile-inner {
