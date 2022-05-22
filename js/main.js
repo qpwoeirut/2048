@@ -43,8 +43,8 @@ window.requestAnimationFrame(function () {
         elem.onchange = updateStrategy
     })
 
-    const MAX_WAIT_TIME = 8000;
-    let lastMoveTime = 4000 - MAX_WAIT_TIME;
+    const MAX_WAIT_TIME = 10000;
+    let lastMoveTime = 0;
     const playGame = (timestamp) => {
         if (aiActive && workerReady && !gameManager.isGameTerminated() && lastMoveTime + pauseTime <= timestamp && nextMove !== -1) {
             if (0 <= nextMove && nextMove < 4) {
@@ -59,7 +59,7 @@ window.requestAnimationFrame(function () {
                 nextMove = -2;
             }
         } else if (aiActive && !gameManager.isGameTerminated() && lastMoveTime + MAX_WAIT_TIME <= timestamp) {
-            console.warn("No move in the last 8 seconds!");
+            console.warn("No move in the last 10 seconds!");
             playerWorker.postMessage([1, gameManager.grid.toBitboard()]);
             lastMoveTime = timestamp;
         }
