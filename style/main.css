@@ -135,7 +135,7 @@ hr {
 }
 
 .container {
-  width: 500px;
+  width: clamp(500px, 80%, 40rem);
   margin: 0 auto;
 }
 
@@ -168,11 +168,10 @@ hr {
   position: relative;
   padding: 15px;
   cursor: default;
-  -webkit-touch-callout: none;
-  -ms-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  user-select: none;
   -ms-touch-action: none;
   touch-action: none;
   background: #bbada0;
@@ -691,11 +690,10 @@ hr {
     position: relative;
     padding: 10px;
     cursor: default;
-    -webkit-touch-callout: none;
-    -ms-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    user-select: none;
     -ms-touch-action: none;
     touch-action: none;
     background: #bbada0;

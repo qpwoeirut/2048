@@ -139,7 +139,7 @@ hr {
 }
 
 .container {
-  width: $mobile-threshold - 20px;
+  width: clamp($mobile-threshold - 20px, 80%, 40rem);
   margin: 0 auto;
 }
 
@@ -174,12 +174,10 @@ hr {
     padding: $grid-spacing;
 
     cursor: default;
-    -webkit-touch-callout: none;
-    -ms-touch-callout: none;
-
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    user-select: none;
 
     -ms-touch-action: none;
     touch-action: none;
