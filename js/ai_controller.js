@@ -3,7 +3,6 @@
 
 var Module = {  // using let will cause issues with redefinition of Module
     onRuntimeInitialized: function () {
-        _init_game();
         postMessage("ready!");
 
         const controller = new AiController();
@@ -25,48 +24,45 @@ importScripts("players.js");
 
 function AiController() {
     // this.strategy and this.heuristicId should be updated once the main thread is ready
-    this.strategy = _random_player;
+    this.player = new Module.RandomPlayer();
     this.heuristicId = 0;
 }
 
 AiController.prototype.update_strategy = function(strategyId, heuristicId) {
+    this.player.delete();
     switch (strategyId) {
         case 0:
-            this.strategy = _random_player;
+            this.player = new Module.RandomPlayer();
             break;
         case 1:
-            this.strategy = _spam_corner_player;
+            this.player = new Module.SpamCornerPlayer();
             break;
         case 2:
-            this.strategy = _ordered_player;
+            this.player = new Module.OrderedPlayer();
             break;
         case 3:
-            this.strategy = _rotating_player;
+            this.player = new Module.RotatingPlayer();
             break;
         case 4:
-            this.strategy = _rand_trials_player;
+            this.player = new Module.RandomTrialsStrategy(5, 5, heuristicId);
             this.heuristicId = heuristicId;
-            _init_rand_trials_strategy(5, 5, this.heuristicId);
             break;
         case 5:
-            this.strategy = _minimax_player;
+            this.player = new Module.MinimaxStrategy(-1, heuristicId);
             this.heuristicId = heuristicId;
-            _init_minimax_strategy(-1, this.heuristicId);
             break;
         case 6:
-            this.strategy = _expectimax_player;
+            this.player = new Module.ExpectimaxStrategy(-1, heuristicId);
             this.heuristicId = heuristicId;
-            _init_expectimax_strategy(-1, this.heuristicId);
             break;
         case 7:
-            this.strategy = _monte_carlo_player;
-            _init_monte_carlo_strategy(10000);
+            this.player = new Module.MonteCarloPlayer(10000);
             break;
     }
 }
 
 AiController.prototype.pick_move = function(board) {
-    const move = this.strategy(board);
+    const move = this.player.pick_move(board);
 
     return (move + 3) & 3;  // convert from LURD to URDL
 }
