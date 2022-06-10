@@ -21,7 +21,7 @@ const gameEditor = {
     },
 
     doTileChange(button, row, col) {
-        // this.gameManager.grid.erasePreviousPositions();
+        this.gameManager.prepareTiles();
         switch (button) {
             case 0:
                 this.incrementTile(row, col);

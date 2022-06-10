@@ -117,7 +117,6 @@ Grid.prototype.serialize = function () {
 };
 
 Grid.prototype.getTileOrOne = function(row, col) {
-  console.log(row, col);
   return this.cells[col][row] || new Tile({x: col, y: row}, 1);
 }
 
