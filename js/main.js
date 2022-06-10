@@ -1,8 +1,7 @@
-window.requestAnimationFrame(function () {
+function main(gameManager) {
     const playerWorker = new Worker("js/ai_controller.js");
     let workerReady = false;
 
-    const gameManager = new GameManager(4, KeyboardInputManager, HTMLActuator, LocalStorageManager);
     const heuristicContainer = document.getElementById("heuristicContainer");
 
     const updateStrategy = () => {
@@ -76,4 +75,4 @@ window.requestAnimationFrame(function () {
     }
 
     window.requestAnimationFrame(playGame);
-});
+}

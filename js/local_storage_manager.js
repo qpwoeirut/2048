@@ -61,3 +61,10 @@ LocalStorageManager.prototype.setGameState = function (gameState) {
 LocalStorageManager.prototype.clearGameState = function () {
   this.storage.removeItem(this.gameStateKey);
 };
+
+function DummyStorageManager() {}
+DummyStorageManager.prototype.getBestScore = () => { return 0 }
+DummyStorageManager.prototype.setBestScore = () => {}
+DummyStorageManager.prototype.getGameState = () => { return null }
+DummyStorageManager.prototype.setGameState = () => {}
+DummyStorageManager.prototype.clearGameState = () => {}

@@ -116,19 +116,28 @@ Grid.prototype.serialize = function () {
   };
 };
 
+Grid.prototype.getTileOrOne = function(row, col) {
+  console.log(row, col);
+  return this.cells[col][row] || new Tile({x: col, y: row}, 1);
+}
+
 Grid.prototype.toBitboard = function() {
   let bitboard = 0n;
   for (let r = 0; r < this.size; r++) {
     for (let c = 0; c < this.size; c++) {
       // 0, 0 is bottom right in bitboard representation, r and c are swapped
-      let val = this.cells[this.size - c - 1][this.size - r - 1]?.value;
-      let a = 0n;
-      while (val !== null && val > 1) {
-        val >>= 1;
-        ++a;
-      }
-      bitboard += a << BigInt(16*r | 4*c);
+      const val = this.cells[this.size - c - 1][this.size - r - 1]?.value || 1;
+      bitboard += BigInt(ilog2(val)) << BigInt(16*r | 4*c);
     }
   }
   return bitboard;
+}
+
+const ilog2 = (x) => {
+  let lg = 0;
+  while (x > 1) {
+    x >>= 1;
+    ++lg;
+  }
+  return lg;
 }
