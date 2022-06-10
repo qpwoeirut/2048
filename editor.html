@@ -34,7 +34,12 @@
     </div>
 
     <div class="above-game">
-        <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
+        <p class="game-intro">
+            This is a board editor for testing the AIs.<br>
+            Left click to add/increase a tile and right click to remove/decrease a tile.<br>
+            Be warned that the AI's code doesn't always handle the 65536 tile properly.<br>
+            Click <a href="/index.html">here</a> to return to the real game.
+        </p>
         <a class="restart-button">New Game</a>
     </div>
 
@@ -89,7 +94,7 @@
             <br>
             <br>
             <label for="pauseTime">Pause time between moves (in milliseconds): </label>
-            <input type="number" id="pauseTime" min="0" max="10000" value="50" required>
+            <input type="number" id="pauseTime" min="0" max="10000" value="200" required>
             <br>
             <small>This is a <i>minimum</i> pause time, and the AI might spend more time thinking than this value.</small>
         </div>
