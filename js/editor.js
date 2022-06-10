@@ -21,12 +21,14 @@ const gameEditor = {
     },
 
     doTileChange(button, row, col) {
+        console.log(button, row, col);
         this.gameManager.prepareTiles();
         switch (button) {
             case 0:
                 this.incrementTile(row, col);
                 break;
             case 1:
+            case 2:
                 this.decrementTile(row, col);
                 break;
         }
@@ -49,11 +51,16 @@ const getPosition = (elem) => {
 // querySelectorAll will return elements in document order
 document.querySelectorAll(".grid-cell").forEach((elem, index) => {
     const boundDoTileChange = gameEditor.doTileChange.bind(gameEditor);
-    elem.onclick = (e) => boundDoTileChange(e.button, index >> 2, index & 3);
+    // onmouseup works for both left/right click, but onclick doesn't
+    elem.onmouseup = (e) => boundDoTileChange(e.button, index >> 2, index & 3);
 })
-document.querySelector(".tile-container").onclick = (e) => {
+
+// handle events at tileContainer since the tile elements are added and removed dynamically
+document.querySelector(".tile-container").onmouseup = (e) => {
     const target = e.target;
     const tile = target.classList.contains("tile-inner") ? target.parentElement : target;
     const [row, col] = getPosition(tile);
     gameEditor.doTileChange(e.button, row, col);
+    e.preventDefault();
 }
+document.querySelector(".game-container").oncontextmenu = (e) => e.preventDefault();  // don't show menu popup on right click
