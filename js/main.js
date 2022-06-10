@@ -30,10 +30,10 @@ function main(gameManager) {
     }
     playerWorker.onerror = console.error;
 
-    let aiActive = true;
     const aiOn = document.getElementById("aiOn");
-    aiOn.onchange = function() { aiActive = aiOn.checked }
     const aiOff = document.getElementById("aiOff");
+    let aiActive = aiOn.checked;
+    aiOn.onchange = function() { aiActive = aiOn.checked }
     aiOff.onchange = function() { aiActive = !aiOff.checked }
 
     const pauseTimeElem = document.getElementById("pauseTime");
