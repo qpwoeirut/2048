@@ -3,11 +3,7 @@
 
 var Module = {  // using let will cause issues with redefinition of Module
     onRuntimeInitialized: function () {
-        try {
-            Module.td0_load_best();
-        } catch (e) {
-            console.error(e)
-        }
+        Module.td0_load_best();
 
         postMessage("ready!");
 
