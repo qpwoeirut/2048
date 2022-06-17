@@ -119,9 +119,11 @@
             <input type="radio" id="monteCarloStrategy" name="ai_strategy" value="7" data-heuristic="false">
             <label for="monteCarloStrategy">Monte Carlo Tree Search</label>
             <br>
-            <input type="radio" id="nTupleStrategy" name="ai_strategy" value="8" data-heuristic="false">
-            <label for="nTupleStrategy">Machine Learning <small>(temporal difference learning with n-tuple network based on <a href="https://www.cs.put.poznan.pl/wjaskowski/pub/papers/Szubert2014_2048.pdf" target="_blank">paper</a>)</small></label>
-            <br>
+            <div class="hidden">
+                <input type="radio" id="nTupleStrategy" name="ai_strategy" value="8" data-heuristic="false">
+                <label for="nTupleStrategy">Machine Learning <small>(temporal difference learning with n-tuple network based on <a href="https://www.cs.put.poznan.pl/wjaskowski/pub/papers/Szubert2014_2048.pdf" target="_blank">paper</a>)</small></label>
+                <br>
+            </div>
             <div id="heuristicContainer">
                 <h3>Heuristic</h3>
                 <input type="radio" id="scoreHeuristic" name="ai_heuristic" value="0">
