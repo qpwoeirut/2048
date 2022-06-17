@@ -3,6 +3,8 @@
 
 var Module = {  // using let will cause issues with redefinition of Module
     onRuntimeInitialized: function () {
+        Module.td0_load_best();
+
         postMessage("ready!");
 
         const controller = new AiController();
@@ -23,7 +25,7 @@ importScripts("players.js");
 
 
 function AiController() {
-    // this.strategy and this.heuristicId should be updated once the main thread is ready
+    // this.player and this.heuristicId should be updated once the main thread is ready
     this.player = new Module.RandomPlayer();
     this.heuristicId = 0;
 }
@@ -57,6 +59,9 @@ AiController.prototype.update_strategy = function(strategyId, heuristicId) {
             break;
         case 7:
             this.player = new Module.MonteCarloPlayer(10000);
+            break;
+        case 8:
+            this.player = Module.TD0.best_model;
             break;
     }
 }
