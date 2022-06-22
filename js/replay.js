@@ -89,4 +89,9 @@ document.getElementById("goBackButton").onclick = replayTool.goBack.bind(replayT
 document.getElementById("goForwardButton").onclick = replayTool.goForward.bind(replayTool);
 document.getElementById("gameRecord").onchange = replayTool.updateRecord.bind(replayTool);
 
+document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") replayTool.goBack();
+    if (event.key === "ArrowRight") replayTool.goForward();
+});
+
 replayTool.updateRecord()
