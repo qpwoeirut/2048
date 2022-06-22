@@ -90,9 +90,9 @@ const replayTool = {
         [...this.gameRecord].forEach((c, idx) => {
             const span = document.createElement("span");
             span.classList.add("record-display");
-            span.setAttribute("data-index", idx.toString());
+            span.setAttribute("data-index", (idx + 1).toString());
             span.textContent = c;
-            span.onclick = () => this.goToIndex(idx);
+            span.onclick = () => this.goToIndex(idx + 1);
 
             display.appendChild(span);
         });
@@ -102,7 +102,9 @@ const replayTool = {
     setCurrentIndex: function(index) {
         document.querySelector("span.record-display.highlighted")?.classList?.remove("highlighted");
         this.currentIndex = index;
-        document.querySelector(`span.record-display[data-index="${index}"]`).classList.add("highlighted");
+        if (index > 0) {
+            document.querySelector(`span.record-display[data-index="${index}"]`).classList.add("highlighted");
+        }
     }
 }
 
