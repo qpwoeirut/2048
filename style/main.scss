@@ -13,7 +13,9 @@ $tile-color: #eee4da;
 $tile-gold-color: #edc22e;
 $tile-gold-glow-color: lighten($tile-gold-color, 15%);
 
-$game-container-margin-top: 40px;
+$page-background: #faf8ef;
+
+$game-container-margin-top: 25px;
 $game-container-background: #bbada0;
 
 $transition-speed: 100ms;
@@ -22,7 +24,7 @@ html, body {
   margin: 0;
   padding: 0;
 
-  background: #faf8ef;
+  background: $page-background;
   color: $text-color;
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 1.125rem;
@@ -308,6 +310,17 @@ hr {
   }
 
   // for replay.html only
+  #gameRecordDisplay {
+    background: darken($page-background, 10%);
+    margin: 1rem;
+    padding: 0.75rem 0.5rem;
+    overflow-x: scroll;
+    font-family: monospace;
+    white-space: nowrap;
+  }
+  span.record-display.highlighted {
+    background: darken($page-background, 20%);
+  }
   #replayControls {
     width: $field-width;
     margin: 1rem auto;

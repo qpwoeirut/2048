@@ -164,7 +164,7 @@ hr {
   }
 }
 .game-container {
-  margin: 40px auto 0 auto;
+  margin: 25px auto 0 auto;
   position: relative;
   padding: 15px;
   cursor: default;
@@ -372,6 +372,19 @@ hr {
   -moz-transform: translate(363px, 363px);
   -ms-transform: translate(363px, 363px);
   transform: translate(363px, 363px);
+}
+
+#gameRecordDisplay {
+  background: #eee7c8;
+  margin: 1rem;
+  padding: 0.75rem 0.5rem;
+  overflow-x: scroll;
+  font-family: monospace;
+  white-space: nowrap;
+}
+
+span.record-display.highlighted {
+  background: #e2d6a1;
 }
 
 #replayControls {
@@ -723,7 +736,7 @@ hr {
   }
 
   .game-container {
-    margin: 40px auto 0 auto;
+    margin: 25px auto 0 auto;
     position: relative;
     padding: 10px;
     cursor: default;
@@ -931,6 +944,19 @@ hr {
     -moz-transform: translate(255px, 255px);
     -ms-transform: translate(255px, 255px);
     transform: translate(255px, 255px);
+  }
+
+  #gameRecordDisplay {
+    background: #eee7c8;
+    margin: 1rem;
+    padding: 0.75rem 0.5rem;
+    overflow-x: scroll;
+    font-family: monospace;
+    white-space: nowrap;
+  }
+
+  span.record-display.highlighted {
+    background: #e2d6a1;
   }
 
   #replayControls {

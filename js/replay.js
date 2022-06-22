@@ -49,11 +49,15 @@ const replayTool = {
             }
         });
     },
-    goBack: function() {
-        if (this.currentIndex === 0) return;
-        this.copyValues(this.calculateGrid(--this.currentIndex), this.gameManager.grid);
+    goToIndex: function(index) {
+        this.setCurrentIndex(index);
+        this.copyValues(this.calculateGrid(this.currentIndex), this.gameManager.grid);
         this.gameManager.prepareTiles();  // the animations look backwards, so let's just disable them
         this.gameManager.actuate();
+    },
+    goBack: function() {
+        if (this.currentIndex === 0) return;
+        this.goToIndex(this.currentIndex - 1)
     },
     goForward: function() {
         if (this.currentIndex === this.gameRecord.length) return;
@@ -74,14 +78,31 @@ const replayTool = {
             }
         }
 
-
-        this.currentIndex++;
+        this.setCurrentIndex(this.currentIndex + 1);
     },
     updateRecord: function() {
         this.gameRecord = document.getElementById("gameRecord").value;
-        this.currentIndex = 0;
         this.gameManager.grid = new Grid(this.gameManager.size);
         this.gameManager.actuate();
+
+        const display = document.getElementById("gameRecordDisplay");
+        while (display.lastElementChild) display.removeChild(display.lastElementChild);
+        [...this.gameRecord].forEach((c, idx) => {
+            const span = document.createElement("span");
+            span.classList.add("record-display");
+            span.setAttribute("data-index", idx.toString());
+            span.textContent = c;
+            span.onclick = () => this.goToIndex(idx);
+
+            display.appendChild(span);
+        });
+
+        this.setCurrentIndex(0);
+    },
+    setCurrentIndex: function(index) {
+        document.querySelector("span.record-display.highlighted")?.classList?.remove("highlighted");
+        this.currentIndex = index;
+        document.querySelector(`span.record-display[data-index="${index}"]`).classList.add("highlighted");
     }
 }
 
