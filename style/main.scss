@@ -163,6 +163,9 @@ hr {
   color: $bright-text-color;
   height: 40px;
   line-height: 42px;
+  &:hover {
+    background: darken($game-container-background, 15%);
+  }
 }
 
 // Game field mixin used to render CSS at different width
@@ -302,6 +305,25 @@ hr {
         }
       }
     }
+  }
+
+  // for replay.html only
+  #replayControls {
+    width: $field-width;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #gameRecordContainer {
+    text-align: center;
+  }
+  #gameRecord {
+    max-width: $field-width - 150px;
+  }
+  #goBackButton, #goForwardButton {
+    @include button;
+    height: 44px;  // make these buttons slightly taller than default
   }
 }
 
@@ -465,14 +487,13 @@ hr {
   float: right;
 }
 
+// added for AI controls
 #controlsContainer {
   margin: 1rem auto;
 }
-
 #controlsContainer h2, #controlsContainer h3 {
   margin-bottom: 0.25rem;
 }
-
 .hidden {
   display: none;
 }

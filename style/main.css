@@ -221,6 +221,9 @@ hr {
   line-height: 42px;
   margin-left: 9px;
 }
+.game-container .game-message a:hover {
+  background: #9b8773;
+}
 .game-container .game-message a.keep-playing-button {
   display: none;
 }
@@ -369,6 +372,37 @@ hr {
   -moz-transform: translate(363px, 363px);
   -ms-transform: translate(363px, 363px);
   transform: translate(363px, 363px);
+}
+
+#replayControls {
+  width: 500px;
+  margin: 1rem auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#gameRecordContainer {
+  text-align: center;
+}
+
+#gameRecord {
+  max-width: 350px;
+}
+
+#goBackButton, #goForwardButton {
+  display: inline-block;
+  background: #8f7a66;
+  border-radius: 3px;
+  padding: 0 20px;
+  text-decoration: none;
+  color: #f9f6f2;
+  height: 40px;
+  line-height: 42px;
+  height: 44px;
+}
+#goBackButton:hover, #goForwardButton:hover {
+  background: #9b8773;
 }
 
 .tile {
@@ -630,6 +664,9 @@ hr {
   text-align: center;
   float: right;
 }
+.restart-button:hover {
+  background: #9b8773;
+}
 
 #controlsContainer {
   margin: 1rem auto;
@@ -742,6 +779,9 @@ hr {
     height: 40px;
     line-height: 42px;
     margin-left: 9px;
+  }
+  .game-container .game-message a:hover {
+    background: #9b8773;
   }
   .game-container .game-message a.keep-playing-button {
     display: none;
@@ -891,6 +931,37 @@ hr {
     -moz-transform: translate(255px, 255px);
     -ms-transform: translate(255px, 255px);
     transform: translate(255px, 255px);
+  }
+
+  #replayControls {
+    width: 350px;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #gameRecordContainer {
+    text-align: center;
+  }
+
+  #gameRecord {
+    max-width: 200px;
+  }
+
+  #goBackButton, #goForwardButton {
+    display: inline-block;
+    background: #8f7a66;
+    border-radius: 3px;
+    padding: 0 20px;
+    text-decoration: none;
+    color: #f9f6f2;
+    height: 40px;
+    line-height: 42px;
+    height: 44px;
+  }
+  #goBackButton:hover, #goForwardButton:hover {
+    background: #9b8773;
   }
 
   .tile .tile-inner {

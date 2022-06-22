@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>2048 with AI</title>
+
+    <link href="style/main.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+    <meta name="viewport" content="width=425, initial-scale=1.0">
+    <meta name="description" content="The 2048 game with AI players">
+
+    <script type="text/javascript" defer src="js/keyboard_input_manager.js"></script>
+    <script type="text/javascript" defer src="js/html_actuator.js"></script>
+    <script type="text/javascript" defer src="js/grid.js"></script>
+    <script type="text/javascript" defer src="js/tile.js"></script>
+    <script type="text/javascript" defer src="js/local_storage_manager.js"></script>
+    <script type="text/javascript" defer src="js/game_manager.js"></script>
+    <script type="text/javascript" defer src="js/main.js"></script>
+    <script type="text/javascript" defer src="js/replay.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="heading">
+        <h1 class="title">2048 AI</h1>
+        <div class="scores-container">
+            <div class="score-container hidden">0</div>
+            <div class="best-container hidden">0</div>
+        </div>
+    </div>
+
+    <div class="above-game">
+        <p class="game-intro">
+            This is a game replay tool.<br>
+            Paste the game record into the box and use the arrow keys to move forward and backward.<br>
+            Click <a href="index.html">here</a> to return to the real game.
+        </p>
+        <a class="restart-button hidden">New Game</a>
+    </div>
+
+    <div class="game-container">
+        <div class="game-message">
+            <p></p>
+            <div class="lower">
+                <a class="keep-playing-button">Keep going</a>
+                <a class="retry-button">Try again</a>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+        </div>
+
+        <div class="tile-container">
+
+        </div>
+    </div>
+    <div id="replayControls">
+        <a id="goBackButton"> < </a>
+        <div id="gameRecordContainer">
+            <label for="gameRecord">Game Record</label>
+            <br>
+            <textarea id="gameRecord"></textarea>
+        </div>
+        <a id="goForwardButton"> > </a>
+    </div>
+
+    <hr>
+    <p class="game-explanation">
+        <strong class="important">How to play:</strong> Pick a strategy for the AI to use.
+        You can also turn off the AI and use your <strong>arrow keys</strong> to move the tiles.
+        Press <strong>R</strong> to restart.
+    </p>
+    <hr>
+    <p>
+        AI players written by Stanley Zhong. (Source code for <a href="https://github.com/qpwoeirut/2048-solver" target="_blank">AIs</a> and <a href="https://github.com/qpwoeirut/2048-solver" target="_blank">website</a>)
+        <br>
+        Game mechanics from the <a href="https://play2048.co/" target="_blank">original 2048 game</a>.
+    </p>
+</div>
+</body>
+</html>
