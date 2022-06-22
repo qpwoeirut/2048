@@ -137,3 +137,16 @@ HTMLActuator.prototype.clearMessage = function () {
   this.messageContainer.classList.remove("game-won");
   this.messageContainer.classList.remove("game-over");
 };
+
+function DummyActuator() {}
+DummyActuator.prototype.actuate = function (grid, metadata) {}
+DummyActuator.prototype.continueGame = function () {}
+DummyActuator.prototype.clearContainer = function (container) {}
+DummyActuator.prototype.addTile = function (tile) {}
+DummyActuator.prototype.applyClasses = function (element, classes) {}
+DummyActuator.prototype.normalizePosition = function (position) {}
+DummyActuator.prototype.positionClass = function (position) {}
+DummyActuator.prototype.updateScore = function (score) {}
+DummyActuator.prototype.updateBestScore = function (bestScore) {}
+DummyActuator.prototype.message = function (won) {}
+DummyActuator.prototype.clearMessage = function () {}

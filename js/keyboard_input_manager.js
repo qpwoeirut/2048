@@ -142,3 +142,11 @@ KeyboardInputManager.prototype.bindButtonPress = function (selector, fn) {
   button.addEventListener("click", fn.bind(this));
   button.addEventListener(this.eventTouchend, fn.bind(this));
 };
+
+function DummyKeyboardInputManager() {}
+DummyKeyboardInputManager.prototype.on = function (event, callback) {}
+DummyKeyboardInputManager.prototype.emit = function (event, data) {}
+DummyKeyboardInputManager.prototype.listen = function (event, data) {}
+DummyKeyboardInputManager.prototype.restart = function (event) {}
+DummyKeyboardInputManager.prototype.keepPlaying = function (event) {}
+DummyKeyboardInputManager.prototype.bindButtonPress = function (selector, fn) {}
