@@ -319,7 +319,13 @@ hr {
     white-space: nowrap;
   }
   span.record-display.highlighted {
-    background: darken($page-background, 20%);
+    background: darken($page-background, 30%);
+  }
+  span.record-display {
+    cursor: pointer;
+    &:hover:not(.highlighted) {
+      background: darken($page-background, 15%);
+    }
   }
   #replayControls {
     width: $field-width;

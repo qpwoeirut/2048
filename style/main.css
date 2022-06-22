@@ -384,7 +384,14 @@ hr {
 }
 
 span.record-display.highlighted {
-  background: #e2d6a1;
+  background: #d6c57a;
+}
+
+span.record-display {
+  cursor: pointer;
+}
+span.record-display:hover:not(.highlighted) {
+  background: #e8dfb5;
 }
 
 #replayControls {
@@ -956,7 +963,14 @@ span.record-display.highlighted {
   }
 
   span.record-display.highlighted {
-    background: #e2d6a1;
+    background: #d6c57a;
+  }
+
+  span.record-display {
+    cursor: pointer;
+  }
+  span.record-display:hover:not(.highlighted) {
+    background: #e8dfb5;
   }
 
   #replayControls {
