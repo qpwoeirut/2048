@@ -12,8 +12,19 @@ var Module = {  // using let will cause issues with redefinition of Module
             if (messageType === 0) {
                 controller.update_strategy(e.data[1], e.data[2]);
             } else if (messageType === 1) {
-                const move = controller.pick_move(e.data[1]);
+                const board = e.data[1];
+                const move = controller.pick_move(board);
                 postMessage(move);
+            } else if (messageType === 2) {
+                const board = e.data[1];
+                console.log(`Score: ${Module.score_heuristic(board)}\n` +
+                            `Merge: ${Module.merge_heuristic(board)}\n` +
+                            `Corner: ${Module.corner_heuristic(board)}\n` +
+                            `Wall Gap: ${Module.wall_gap_heuristic(board)}\n` +
+                            `Full Wall: ${Module.full_wall_heuristic(board)}\n` +
+                            `Strict Wall: ${Module.strict_wall_heuristic(board)}\n` +
+                            `Skewed Corner: ${Module.skewed_corner_heuristic(board)}\n` +
+                            `Monotonicity: ${Module.monotonicity_heuristic(board)}`);
             }
         }
 

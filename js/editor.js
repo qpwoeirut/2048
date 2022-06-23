@@ -1,5 +1,6 @@
 const gameManager = new GameManager(4, KeyboardInputManager, HTMLActuator, DummyStorageManager);
-main(gameManager);
+const playerWorker = new Worker("js/ai_controller.js");
+main(gameManager, playerWorker);
 
 const gameEditor = {
     gameManager: gameManager,
@@ -21,7 +22,6 @@ const gameEditor = {
     },
 
     doTileChange(button, row, col) {
-        console.log(button, row, col);
         this.gameManager.prepareTiles();
         switch (button) {
             case 0:
@@ -64,3 +64,5 @@ document.querySelector(".tile-container").onmouseup = (e) => {
     e.preventDefault();
 }
 document.querySelector(".game-container").oncontextmenu = (e) => e.preventDefault();  // don't show menu popup on right click
+
+const print_evals = () => playerWorker.postMessage([2, gameManager.grid.toBitboard()])

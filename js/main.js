@@ -1,5 +1,4 @@
-function main(gameManager) {
-    const playerWorker = new Worker("js/ai_controller.js");
+function main(gameManager, playerWorker) {
     let workerReady = false;
 
     const heuristicContainer = document.getElementById("heuristicContainer");
