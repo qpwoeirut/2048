@@ -103,7 +103,9 @@ const replayTool = {
         document.querySelector("span.record-display.highlighted")?.classList?.remove("highlighted");
         this.currentIndex = index;
         if (index > 0) {
-            document.querySelector(`span.record-display[data-index="${index}"]`).classList.add("highlighted");
+            const new_highlight = document.querySelector(`span.record-display[data-index="${index}"]`);
+            new_highlight.classList.add("highlighted");
+            new_highlight.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' });
         }
     }
 }
