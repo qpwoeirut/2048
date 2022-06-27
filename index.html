@@ -113,14 +113,17 @@
             <input type="radio" id="minimaxStrategy" name="ai_strategy" value="5" data-heuristic="true">
             <label for="minimaxStrategy">Minimax</label>
             <br>
-            <input type="radio" id="expectimaxStrategy" name="ai_strategy" value="6" data-heuristic="true" checked>
-            <label for="expectimaxStrategy">Expectimax</label>
+            <input type="radio" id="expectimaxDepthStrategy" name="ai_strategy" value="6" data-heuristic="true" checked>
+            <label for="expectimaxDepthStrategy">Expectimax (search by depth)</label>
             <br>
-            <input type="radio" id="monteCarloStrategy" name="ai_strategy" value="7" data-heuristic="false">
+            <input type="radio" id="expectimaxProbabilityStrategy" name="ai_strategy" value="7" data-heuristic="true">
+            <label for="expectimaxProbabilityStrategy">Expectimax (search by probability)</label>
+            <br>
+            <input type="radio" id="monteCarloStrategy" name="ai_strategy" value="8" data-heuristic="false">
             <label for="monteCarloStrategy">Monte Carlo Tree Search</label>
             <br>
             <div class="hidden">
-                <input type="radio" id="nTupleStrategy" name="ai_strategy" value="8" data-heuristic="false">
+                <input type="radio" id="nTupleStrategy" name="ai_strategy" value="9" data-heuristic="false">
                 <label for="nTupleStrategy">Machine Learning <small>(temporal difference learning with n-tuple network based on <a href="https://www.cs.put.poznan.pl/wjaskowski/pub/papers/Szubert2014_2048.pdf" target="_blank">paper</a>)</small></label>
                 <br>
             </div>

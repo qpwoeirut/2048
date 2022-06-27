@@ -65,13 +65,17 @@ AiController.prototype.update_strategy = function(strategyId, heuristicId) {
             this.heuristicId = heuristicId;
             break;
         case 6:
-            this.player = new Module.ExpectimaxStrategy(-1, heuristicId);
+            this.player = new Module.ExpectimaxDepthStrategy(-1, heuristicId);
             this.heuristicId = heuristicId;
             break;
         case 7:
-            this.player = new Module.MonteCarloPlayer(10000);
+            this.player = new Module.ExpectimaxProbabilityStrategy(0.001, heuristicId);
+            this.heuristicId = heuristicId;
             break;
         case 8:
+            this.player = new Module.MonteCarloPlayer(10000);
+            break;
+        case 9:
             this.player = Module.TD0.best_model;
             break;
     }
