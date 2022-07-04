@@ -64,5 +64,3 @@ document.querySelector(".tile-container").onmouseup = (e) => {
     e.preventDefault();
 }
 document.querySelector(".game-container").oncontextmenu = (e) => e.preventDefault();  // don't show menu popup on right click
-
-const print_evals = () => playerWorker.postMessage([2, gameManager.grid.toBitboard()])

@@ -107,4 +107,6 @@ function main(gameManager, playerWorker) {
     }
 
     window.requestAnimationFrame(playGame);
+
+    window.printEvals = () => playerWorker.postMessage([2, gameManager.grid.toBitboard()])
 }
