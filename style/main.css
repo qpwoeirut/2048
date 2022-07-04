@@ -378,7 +378,7 @@ hr {
   background: #eee7c8;
   margin: 1rem;
   padding: 0.75rem 0.5rem;
-  overflow-x: scroll;
+  overflow-x: hidden;
   font-family: monospace;
   white-space: nowrap;
 }
@@ -395,7 +395,7 @@ span.record-display:hover:not(.highlighted) {
 }
 
 #replayControls {
-  width: 500px;
+  width: min(520px, 100%);
   margin: 1rem auto;
   display: flex;
   justify-content: space-between;
@@ -410,7 +410,7 @@ span.record-display:hover:not(.highlighted) {
   max-width: 350px;
 }
 
-#goBackButton, #goForwardButton {
+.game-record-control {
   display: inline-block;
   background: #8f7a66;
   border-radius: 3px;
@@ -419,9 +419,11 @@ span.record-display:hover:not(.highlighted) {
   color: #f9f6f2;
   height: 40px;
   line-height: 42px;
-  height: 44px;
+  line-height: 19px;
+  padding: 10px;
+  height: 20px;
 }
-#goBackButton:hover, #goForwardButton:hover {
+.game-record-control:hover {
   background: #9b8773;
 }
 
@@ -957,7 +959,7 @@ span.record-display:hover:not(.highlighted) {
     background: #eee7c8;
     margin: 1rem;
     padding: 0.75rem 0.5rem;
-    overflow-x: scroll;
+    overflow-x: hidden;
     font-family: monospace;
     white-space: nowrap;
   }
@@ -974,7 +976,7 @@ span.record-display:hover:not(.highlighted) {
   }
 
   #replayControls {
-    width: 350px;
+    width: min(370px, 100%);
     margin: 1rem auto;
     display: flex;
     justify-content: space-between;
@@ -989,7 +991,7 @@ span.record-display:hover:not(.highlighted) {
     max-width: 200px;
   }
 
-  #goBackButton, #goForwardButton {
+  .game-record-control {
     display: inline-block;
     background: #8f7a66;
     border-radius: 3px;
@@ -998,9 +1000,11 @@ span.record-display:hover:not(.highlighted) {
     color: #f9f6f2;
     height: 40px;
     line-height: 42px;
-    height: 44px;
+    line-height: 19px;
+    padding: 10px;
+    height: 20px;
   }
-  #goBackButton:hover, #goForwardButton:hover {
+  .game-record-control:hover {
     background: #9b8773;
   }
 

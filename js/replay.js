@@ -80,7 +80,11 @@ const replayTool = {
 
         this.setCurrentIndex(this.currentIndex + 1);
     },
-    updateRecord: function() {
+    jumpBack:    function() { this.goToIndex(Math.max(0, this.currentIndex - 250)); },
+    jumpForward: function() { this.goToIndex(Math.min(this.gameRecord.length, this.currentIndex + 250)) },
+    skipToStart: function() { this.goToIndex(0) },
+    skipToEnd:   function() { this.goToIndex(this.gameRecord.length) },
+    updateRecord: function(changeIndex=true) {
         this.gameRecord = document.getElementById("gameRecord").value;
         this.gameManager.grid = new Grid(this.gameManager.size);
         this.gameManager.actuate();
@@ -96,8 +100,7 @@ const replayTool = {
 
             display.appendChild(span);
         });
-
-        this.setCurrentIndex(0);
+        if (changeIndex) this.setCurrentIndex(0);
     },
     setCurrentIndex: function(index) {
         document.querySelector("span.record-display.highlighted")?.classList?.remove("highlighted");
@@ -106,12 +109,23 @@ const replayTool = {
             const new_highlight = document.querySelector(`span.record-display[data-index="${index}"]`);
             new_highlight.classList.add("highlighted");
             new_highlight.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' });
+        } else {
+            document.querySelector(`span.record-display[data-index="1"]`).scrollIntoView({
+                behavior: 'auto', block: 'nearest', inline: 'center'
+            });
         }
+
+        const label = document.getElementById("gameRecordLabel")
+        label.textContent = `${index}/${this.gameRecord.length}`
     }
 }
 
 document.getElementById("goBackButton").onclick = replayTool.goBack.bind(replayTool);
 document.getElementById("goForwardButton").onclick = replayTool.goForward.bind(replayTool);
+document.getElementById("jumpBackButton").onclick = replayTool.jumpBack.bind(replayTool);
+document.getElementById("jumpForwardButton").onclick = replayTool.jumpForward.bind(replayTool);
+document.getElementById("skipToStartButton").onclick = replayTool.skipToStart.bind(replayTool);
+document.getElementById("skipToEndButton").onclick = replayTool.skipToEnd.bind(replayTool);
 document.getElementById("gameRecord").onchange = replayTool.updateRecord.bind(replayTool);
 
 document.addEventListener("keydown", (event) => {
@@ -119,4 +133,4 @@ document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight") replayTool.goForward();
 });
 
-replayTool.updateRecord()
+replayTool.updateRecord(false)

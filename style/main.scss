@@ -314,7 +314,7 @@ hr {
     background: darken($page-background, 10%);
     margin: 1rem;
     padding: 0.75rem 0.5rem;
-    overflow-x: scroll;
+    overflow-x: hidden;
     font-family: monospace;
     white-space: nowrap;
   }
@@ -328,7 +328,7 @@ hr {
     }
   }
   #replayControls {
-    width: $field-width;
+    width: min($field-width + 20, 100%);
     margin: 1rem auto;
     display: flex;
     justify-content: space-between;
@@ -340,9 +340,11 @@ hr {
   #gameRecord {
     max-width: $field-width - 150px;
   }
-  #goBackButton, #goForwardButton {
+  .game-record-control {
     @include button;
-    height: 44px;  // make these buttons slightly taller than default
+    line-height: 19px;
+    padding: 10px;
+    height: 20px;  // make these buttons slightly taller than default
   }
 }
 
