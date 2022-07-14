@@ -10,7 +10,7 @@ var Module = {  // using let will cause issues with redefinition of Module
         onmessage = function(e) {
             const messageType = e.data[0];
             if (messageType === 0) {
-                controller.update_strategy(e.data[1], e.data[2]);
+                controller.update_strategy(e.data[1], e.data[2], e.data[3]);
             } else if (messageType === 1) {
                 const board = e.data[1];
                 const move = controller.pick_move(board);
@@ -41,7 +41,7 @@ function AiController() {
     this.heuristicId = 0;
 }
 
-AiController.prototype.update_strategy = function(strategyId, heuristicId) {
+AiController.prototype.update_strategy = function(strategyId, heuristicId, strength) {
     this.player.delete();
     switch (strategyId) {
         case 0:
@@ -57,23 +57,23 @@ AiController.prototype.update_strategy = function(strategyId, heuristicId) {
             this.player = new Module.RotatingPlayer();
             break;
         case 4:
-            this.player = new Module.RandomTrialsStrategy(5, 5, heuristicId);
+            this.player = new Module.RandomTrialsStrategy([4,5,5][strength], [5,4,5][strength], heuristicId);
             this.heuristicId = heuristicId;
             break;
         case 5:
-            this.player = new Module.MinimaxStrategy(-1, heuristicId);
+            this.player = new Module.MinimaxStrategy([0,-1,-2][strength], heuristicId);
             this.heuristicId = heuristicId;
             break;
         case 6:
-            this.player = new Module.ExpectimaxDepthStrategy(-1, heuristicId);
+            this.player = new Module.ExpectimaxDepthStrategy([0,-1,-2][strength], heuristicId);
             this.heuristicId = heuristicId;
             break;
         case 7:
-            this.player = new Module.ExpectimaxProbabilityStrategy(0.001, heuristicId);
+            this.player = new Module.ExpectimaxProbabilityStrategy([0.004, 0.001, 0.0004][strength], heuristicId);
             this.heuristicId = heuristicId;
             break;
         case 8:
-            this.player = new Module.MonteCarloPlayer(10000);
+            this.player = new Module.MonteCarloPlayer([5000,10000,15000][strength]);
             break;
         case 9:
             this.player = Module.TD0.best_model;

@@ -1,5 +1,6 @@
 const STRATEGY_KEY = "2048-aiStrategy"
 const HEURISTIC_KEY = "2048-aiHeuristic"
+const STRENGTH_KEY = "2048-aiStrength"
 const ACTIVE_KEY = "2048-aiOn"
 const PAUSE_TIME_KEY = "2048-pauseTime"
 
@@ -19,10 +20,14 @@ function main(gameManager, playerWorker) {
         const selectedHeuristic = document.querySelector('input[name="ai_heuristic"]:checked')
         const heuristicId = parseInt(selectedHeuristic.value);
 
-        playerWorker.postMessage([0, strategyId, heuristicId]);
+        const selectedStrength = document.querySelector('input[name="ai_strength"]:checked')
+        const strengthVal = parseInt(selectedStrength.value)
 
-        localStorage.setItem(STRATEGY_KEY, selectedStrategy.id)
-        localStorage.setItem(HEURISTIC_KEY, selectedHeuristic.id)
+        playerWorker.postMessage([0, strategyId, heuristicId, strengthVal]);
+
+        localStorage.setItem(STRATEGY_KEY, selectedStrategy.id);
+        localStorage.setItem(HEURISTIC_KEY, selectedHeuristic.id);
+        localStorage.setItem(STRENGTH_KEY, selectedStrength.id);
     }
 
     // initialize settings, read values from localStorage if they exist
@@ -59,11 +64,15 @@ function main(gameManager, playerWorker) {
     // select previous strategies from saved settings, if they exist
     document.getElementById(localStorage.getItem(STRATEGY_KEY))?.click();
     document.getElementById(localStorage.getItem(HEURISTIC_KEY))?.click();
+    document.getElementById(localStorage.getItem(STRENGTH_KEY))?.click();
 
     document.querySelectorAll('input[name="ai_strategy"]').forEach(elem => {
         elem.onchange = updateStrategy
     })
     document.querySelectorAll('input[name="ai_heuristic"]').forEach(elem => {
+        elem.onchange = updateStrategy
+    })
+    document.querySelectorAll('input[name="ai_strength"]').forEach(elem => {
         elem.onchange = updateStrategy
     })
 
