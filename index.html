@@ -154,29 +154,37 @@
             </div>
             <div id="heuristicContainer">
                 <h3>Heuristic</h3>
-                <input type="radio" id="scoreHeuristic" name="ai_heuristic" value="0">
-                <label for="scoreHeuristic">Score</label>
-                <br>
-                <input type="radio" id="mergeHeuristic" name="ai_heuristic" value="1">
-                <label for="mergeHeuristic">Empty Tiles</label>
-                <br>
                 <input type="radio" id="cornerHeuristic" name="ai_heuristic" value="2" checked>
                 <label for="cornerHeuristic">Corner Building</label>
-                <br>
-                <input type="radio" id="wallGapHeuristic" name="ai_heuristic" value="3">
-                <label for="wallGapHeuristic">Wall Building With Gap</label>
-                <br>
-                <input type="radio" id="fullWallHeuristic" name="ai_heuristic" value="4">
-                <label for="fullWallHeuristic">Full Wall Building</label>
-                <br>
-                <input type="radio" id="strictWallHeuristic" name="ai_heuristic" value="5">
-                <label for="strictWallHeuristic">Strict Wall Building</label>
-                <br>
-                <input type="radio" id="skewedCornerHeuristic" name="ai_heuristic" value="6">
-                <label for="skewedCornerHeuristic">Skewed Corner Building</label>
+                <small class="description"><br>Strong heuristic based on tile values, with higher weights for tiles in the corner</small>
                 <br>
                 <input type="radio" id="monotonicityHeuristic" name="ai_heuristic" value="7">
                 <label for="monotonicityHeuristic">Monotonicity</label>
+                <small class="description"><br>Strong heuristic that penalizes rows/columns that aren't in sorted order</small>
+                <br>
+                <input type="radio" id="strictWallHeuristic" name="ai_heuristic" value="5">
+                <label for="strictWallHeuristic">Strict Wall Building</label>
+                <small class="description"><br>Decent heuristic that compares boards in lexicographical order, going along a wall with penalties for inversions</small>
+                <br>
+                <input type="radio" id="fullWallHeuristic" name="ai_heuristic" value="4">
+                <label for="fullWallHeuristic">Full Wall Building</label>
+                <small class="description"><br>Decent heuristic that compares boards in lexicographical order, going along a wall</small>
+                <br>
+                <input type="radio" id="wallGapHeuristic" name="ai_heuristic" value="3">
+                <label for="wallGapHeuristic">Wall Building With Gap</label>
+                <small class="description"><br>Decent heuristic that compares boards in lexicographical order, going along a wall with a gap</small>
+                <br>
+                <input type="radio" id="skewedCornerHeuristic" name="ai_heuristic" value="6">
+                <label for="skewedCornerHeuristic">Skewed Corner Building</label>
+                <small class="description"><br>Decent heuristic, similar to Corner Building but with different weights</small>
+                <br>
+                <input type="radio" id="scoreHeuristic" name="ai_heuristic" value="0">
+                <label for="scoreHeuristic">Score</label>
+                <small class="description"><br>Weak heuristic that uses the in-game score</small>
+                <br>
+                <input type="radio" id="mergeHeuristic" name="ai_heuristic" value="1">
+                <label for="mergeHeuristic">Empty Tiles</label>
+                <small class="description"><br>Weak heuristic that counts number of empty tiles on board</small>
                 <br>
             </div>
         </div>
