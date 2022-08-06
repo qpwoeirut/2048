@@ -1022,5 +1022,8 @@ span.record-display:hover:not(.highlighted) {
     margin-top: 30px !important;
   }
 }
+input:not(:checked) + label + small.description {
+  display: none;
+}
 
 /*# sourceMappingURL=main.css.map */

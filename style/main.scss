@@ -588,3 +588,7 @@ hr {
     }
   }
 }
+
+input:not(:checked) + label + small.description {
+  display: none;
+}
