@@ -127,7 +127,7 @@
             <br>
             <input type="radio" id="spamCornerStrategy" name="ai_strategy" value="1" data-heuristic="false">
             <label for="spamCornerStrategy">Corner Spam</label>
-            <small class="description"><br>Weak strategy always moves up or left</small>
+            <small class="description"><br>Weak strategy which always moves up or left</small>
             <br>
             <input type="radio" id="orderedStrategy" name="ai_strategy" value="2" data-heuristic="false">
             <label for="orderedStrategy">Ordered Moves</label>
@@ -141,17 +141,15 @@
             <label for="rotatingStrategy">Rotating Moves</label>
             <small class="description"><br>Very weak strategy that moves left, then up, then right, then left</small>
             <br>
-            <div class="hidden">
-                <input type="radio" id="nTupleStrategy" name="ai_strategy" value="9" data-heuristic="false">
-                <label for="nTupleStrategy">Machine Learning</label>
-                <small class="description">
-                    <br>
-                    Temporal difference learning with n-tuple network based on this <a href="https://www.cs.put.poznan.pl/wjaskowski/pub/papers/Szubert2014_2048.pdf" target="_blank">paper</a>.
-                    <br>
-                    Note that this requires downloading and unzipping a 45MB model file.
-                </small>
+            <input type="radio" id="nTupleStrategy" name="ai_strategy" value="9" data-heuristic="false">
+            <label for="nTupleStrategy">Machine Learning</label>
+            <small class="description">
                 <br>
-            </div>
+                Temporal difference learning with n-tuple network based on this <a href="https://www.cs.put.poznan.pl/wjaskowski/pub/papers/Szubert2014_2048.pdf" target="_blank">paper</a>.
+                <br>
+                Note that this requires downloading a 46MB model file. Random moves will be played while waiting for the download.
+            </small>
+            <br>
             <div id="heuristicContainer">
                 <h3>Heuristic</h3>
                 <input type="radio" id="cornerHeuristic" name="ai_heuristic" value="2" checked>
@@ -164,11 +162,11 @@
                 <br>
                 <input type="radio" id="strictWallHeuristic" name="ai_heuristic" value="5">
                 <label for="strictWallHeuristic">Strict Wall Building</label>
-                <small class="description"><br>Decent heuristic that compares boards in lexicographical order, going along a wall with penalties for inversions</small>
+                <small class="description"><br>Decent heuristic which compares boards in lexicographical order, going along a wall with penalties for inversions</small>
                 <br>
                 <input type="radio" id="fullWallHeuristic" name="ai_heuristic" value="4">
                 <label for="fullWallHeuristic">Full Wall Building</label>
-                <small class="description"><br>Decent heuristic that compares boards in lexicographical order, going along a wall</small>
+                <small class="description"><br>Decent heuristic which compares boards in lexicographical order, going along a wall</small>
                 <br>
                 <input type="radio" id="wallGapHeuristic" name="ai_heuristic" value="3">
                 <label for="wallGapHeuristic">Wall Building With Gap</label>
@@ -180,11 +178,11 @@
                 <br>
                 <input type="radio" id="scoreHeuristic" name="ai_heuristic" value="0">
                 <label for="scoreHeuristic">Score</label>
-                <small class="description"><br>Weak heuristic that uses the in-game score</small>
+                <small class="description"><br>Weak heuristic which uses an approximation of the in-game score</small>
                 <br>
                 <input type="radio" id="mergeHeuristic" name="ai_heuristic" value="1">
                 <label for="mergeHeuristic">Empty Tiles</label>
-                <small class="description"><br>Weak heuristic that counts number of empty tiles on board</small>
+                <small class="description"><br>Weak heuristic which counts number of empty tiles on board</small>
                 <br>
             </div>
         </div>

@@ -3,8 +3,6 @@
 
 var Module = {  // using let will cause issues with redefinition of Module
     onRuntimeInitialized: function () {
-        Module.td0_load_best();
-
         const controller = new AiController();
 
         onmessage = function(e) {
@@ -76,7 +74,7 @@ AiController.prototype.update_strategy = function(strategyId, heuristicId, stren
             this.player = new Module.MonteCarloPlayer([5000,10000,15000][strength]);
             break;
         case 9:
-            this.player = Module.TD0.best_model;
+            this.player = new Module.ExportedTD0();
             break;
     }
 }
